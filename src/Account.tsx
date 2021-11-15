@@ -72,7 +72,7 @@ export default function Account(props: Props) {
         </a>
       </div>
       <div>
-        {lastUpdatedAt.time.toUTCString()} at Block #{lastUpdatedAt.blockNumber}
+        {lastUpdatedAt.time.toLocaleString()} at Block #{lastUpdatedAt.blockNumber}
       </div>
 
       </React.Fragment>
