@@ -39,6 +39,10 @@ export default class CronosService {
         }
     }
 
+    public async getBlockHeight(): Promise<number> {
+        return this.web3.eth.getBlockNumber();
+    }
+
     public async getBalance(account: string): Promise<BigNumber> {
         const balance = await this.web3.eth.getBalance(account);
         return new BigNumber(balance);

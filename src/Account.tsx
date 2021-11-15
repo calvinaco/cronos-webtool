@@ -5,9 +5,15 @@ import { CRO as CROToken, Token } from "./settings";
 import BigNumber from "bignumber.js";
 
 export default function Account(props: Props) {
+  const [lastUpdatedAt, setLastUpdatedAt] = React.useState<LastUpdatedAt>({
+    time: new Date(),
+    blockNumber: 0,
+  });
   const [balanceRows, setBalanceRows] = React.useState<BalanceRow[]>([]);
 
-  const fetchBalances = async () => {
+  const fetchUpdates = async () => {
+    const blockNumber = await props.cronosService.getBlockHeight();
+
     const tokens = [CROToken, ...props.tokens];
     const tokenBalancePromises = tokens.map((token) => {
       if (token === CROToken) {
@@ -36,20 +42,40 @@ export default function Account(props: Props) {
     });
 
     setBalanceRows(rows);
+
+    setLastUpdatedAt({
+      time: new Date(),
+      blockNumber,
+    });
   };
+
   React.useEffect(() => {
     if (balanceRows.length === 0) {
-      fetchBalances();
+      fetchUpdates();
     }
+    const timer = setInterval(() => {
+      fetchUpdates();
+    }, 15000);
+    return () => clearInterval(timer);
   });
 
   return (
     <Card title={(
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href={`https://cronos.crypto.org/explorer/address/${props.account}`}
-      >{props.account}</a>
+      <React.Fragment>
+      <div>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={`https://cronos.crypto.org/explorer/address/${props.account}`}
+        >
+          {props.account}
+        </a>
+      </div>
+      <div>
+        {lastUpdatedAt.time.toUTCString()} at Block #{lastUpdatedAt.blockNumber}
+      </div>
+
+      </React.Fragment>
     )} extra={(
       <Button
         onClick={() => props.onRemoveFromWishList()}
@@ -67,6 +93,11 @@ type Props = {
   account: string;
   tokens: Token[];
 };
+
+type LastUpdatedAt = {
+  time: Date,
+  blockNumber: number,
+}
 
 type BalanceRow = {
   key: string;
