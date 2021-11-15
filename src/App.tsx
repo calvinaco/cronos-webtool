@@ -9,7 +9,7 @@ import { DEFAULT_SETTINGS, Settings } from './settings';
 import Accounts from './Accounts';
 
 export default function App() {
-  const [settings, setSettings, deleteSettings] = useLocalStorage<Settings>('settings');
+  const [settings, setSettings] = useLocalStorage<Settings>('settings');
 
   if (!settings) {
     setSettings(DEFAULT_SETTINGS);
