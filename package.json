@@ -5,7 +5,7 @@
     "name": "Calvin Lau",
     "url": "https://github.com/calvinaco"
   },
-  "homepage": "./",
+  "homepage": "https://calvinaco.github.io/cronos-webtool",
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "4.7.0",
