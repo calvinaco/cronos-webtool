@@ -43,6 +43,7 @@ export default function Accounts(props: Props) {
           />
         </Space>
       </div>
+      {!!accountFilter && `Filtering by account: ${accountFilter}`}
       {props.accounts.reduce((accounts, account) => {
         if (!account.includes(accountFilter)) {
           return accounts;

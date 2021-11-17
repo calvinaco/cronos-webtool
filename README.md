@@ -1,3 +1,13 @@
+# Cronos Web Tool
+
+Live version: https://calvinaco.github.io/cronos-webtool/
+
+- Account Balance Query (CRO, Custom CRC20)
+- Transaction Status Query
+- Account Transaction History (WIP)
+
+-----
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
