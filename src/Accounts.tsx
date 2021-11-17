@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from "react";
-import { Input, Switch, notification, Space } from "antd";
+import { Input, Switch, Space, notification } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Account from "./Account";
 import CronosService from "./service/cronos";

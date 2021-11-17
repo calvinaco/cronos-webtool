@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Table } from "antd";
+import { Button, Card, Table, notification } from "antd";
 import CronosService from "./service/cronos";
 import { CRO as CROToken, Token } from "./settings";
 import BigNumber from "bignumber.js";
@@ -51,11 +51,15 @@ export default function Account(props: Props) {
 
   React.useEffect(() => {
     if (balanceRows.length === 0) {
-      fetchUpdates();
+      fetchUpdates().catch(err => {
+        openError('Fetch balance error', err.toString());
+      });
     }
     const timer = setInterval(() => {
-      fetchUpdates();
-    }, 15000);
+      fetchUpdates().catch(err => {
+        openError('Fetch balance error', err.toString());
+      });
+    }, 30000);
     return () => clearInterval(timer);
   });
 
@@ -136,3 +140,10 @@ const currencyFormat: BigNumber.Format = {
   fractionGroupSize: 0,
   suffix: ''
 }
+
+const openError = (title: string, description: string) => {
+  notification.error({
+    message: title,
+    description,
+  });
+};
