@@ -72,5 +72,11 @@ export const DEFAULT_SETTINGS: Settings = {
       contractAddress: "0x1a8E39ae59e5556B56b76fCBA98d22c9ae557396",
       decimalPlaces: 8,
     },
+    {
+      name: "Binance",
+      symbol: "BNB",
+      contractAddress: "0xfA9343C3897324496A05fC75abeD6bAC29f8A40f",
+      decimalPlaces: 18,
+    }
   ],
 };

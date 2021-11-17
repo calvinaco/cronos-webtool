@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from "react";
-import { Input, notification, Space } from "antd";
+import { Input, Switch, notification, Space } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Account from "./Account";
 import CronosService from "./service/cronos";
@@ -34,6 +34,7 @@ export default function Accounts(props: Props) {
       </div>
       <div style={{ textAlign: "right" }}>
         <Space direction="vertical">
+          <div>Auto Refresh <Switch checked={true} disabled /></div>
           <Input
             placeholder="Filter Account"
             prefix={<UserOutlined />}
@@ -47,9 +48,8 @@ export default function Accounts(props: Props) {
           return accounts;
         }
         accounts.push(
-          <Space>
+          <Space key={account}>
             <Account
-              key={account}
               cronosService={props.cronosService}
               onRemoveFromWishList={() =>
                 props.onRemoveAccountFromWishList(account)

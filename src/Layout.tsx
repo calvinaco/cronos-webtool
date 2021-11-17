@@ -29,7 +29,7 @@ export default function Layout() {
             <Tabs defaultActiveKey={activatedKey} onChange={handleTabChange}>
                 <TabPane tab="Accounts Balances" key="accounts"> </TabPane>
                 <TabPane tab="Query Transaction Status" key="transaction"> </TabPane>
-                {/* <TabPane tab="Settings" key="settings" ></TabPane> */}
+                <TabPane tab="Settings" key="settings" ></TabPane>
             </Tabs>
             <Outlet />
         </React.Fragment>

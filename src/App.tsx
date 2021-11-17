@@ -1,15 +1,16 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route } from "react-router-dom";
 import { useLocalStorage } from '@rehooks/local-storage';
 import Layout from './Layout';
 import Transaction from './Transaction';
 import './App.css';
 import CronosService from './service/cronos';
-import { DEFAULT_SETTINGS, Settings } from './settings';
+import { DEFAULT_SETTINGS, Settings as SettingsType, Token } from './settings';
 import Accounts from './Accounts';
+import Settings from './Settings/Settings';
 
 export default function App() {
-  const [settings, setSettings] = useLocalStorage<Settings>('settings');
+  const [settings, setSettings] = useLocalStorage<SettingsType>('settings');
 
   if (!settings) {
     setSettings(DEFAULT_SETTINGS);
@@ -38,6 +39,26 @@ export default function App() {
     })
   }
 
+  const addTokenToSettings = (value: Token) => {
+    if (!cronosService.isValidAddress(value.contractAddress)) {
+      throw new Error('invalid contract address');
+    }
+    if (!!settings.tokens.find(token => token.contractAddress === value.contractAddress)) {
+      throw new Error('token already added');
+    }
+    setSettings({
+      ...settings,
+      tokens: [...settings!.tokens, value]
+    })
+  }
+
+  const removeTokenAtIndexFromSettings = (index: number) => {
+    setSettings({
+      ...settings,
+      tokens: settings!.tokens.filter((_, i) => i !== index),
+    })
+  }
+
   return (
     <div className="App">
       <Routes>
@@ -50,7 +71,12 @@ export default function App() {
             tokens={settings.tokens}
           />} />
           <Route path="transaction" element={<Transaction cronosService={cronosService} />} />
-          {/* <Route path="settings" element={<Transaction cronosService={cronosService} />} /> */}
+          <Route path="settings" element={<Settings
+            settings={settings}
+            onAddTokenToSettings={addTokenToSettings}
+            onRemoveTokenFromSettings={removeTokenAtIndexFromSettings}
+          />} />
+          <Route index element={<Navigate to="accounts" />} / >
         </Route>
       </Routes>
     </div>

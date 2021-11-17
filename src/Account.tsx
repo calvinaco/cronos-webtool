@@ -30,7 +30,7 @@ export default function Account(props: Props) {
     const rows = balances.map((balance, i) => {
       const token = tokens[i];
       return {
-        key: token.name,
+        key: token.contractAddress,
         name: token.name,
         balance: balance
           .dividedBy(new BigNumber(10).pow(token.decimalPlaces))
@@ -79,8 +79,8 @@ export default function Account(props: Props) {
     )} extra={(
       <Button
         onClick={() => props.onRemoveFromWishList()}
-      >Remove</Button>)
-    } style={{ width: 600 }}>
+      >Remove</Button>
+    )} style={{ width: 600 }}>
       <Table dataSource={balanceRows} columns={columns} pagination={false} />
     </Card>
   )

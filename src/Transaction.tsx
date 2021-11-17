@@ -54,7 +54,7 @@ export default function Transaction(props: Props) {
           style={{width: 650}}
         />
       </Space>
-      <Table dataSource={transactionRows} columns={columns} pagination={false} />;
+      <Table dataSource={transactionRows} columns={columns} pagination={false} />
     </React.Fragment>
   );
 }
