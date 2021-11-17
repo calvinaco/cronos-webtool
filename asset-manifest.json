@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cronos-webtool/static/css/main.97578921.chunk.css",
-    "main.js": "/cronos-webtool/static/js/main.bbb5e10c.chunk.js",
-    "main.js.map": "/cronos-webtool/static/js/main.bbb5e10c.chunk.js.map",
+    "main.js": "/cronos-webtool/static/js/main.367c4048.chunk.js",
+    "main.js.map": "/cronos-webtool/static/js/main.367c4048.chunk.js.map",
     "runtime-main.js": "/cronos-webtool/static/js/runtime-main.a8255150.js",
     "runtime-main.js.map": "/cronos-webtool/static/js/runtime-main.a8255150.js.map",
     "static/css/2.b866bb9d.chunk.css": "/cronos-webtool/static/css/2.b866bb9d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.b866bb9d.chunk.css",
     "static/js/2.82d6ad84.chunk.js",
     "static/css/main.97578921.chunk.css",
-    "static/js/main.bbb5e10c.chunk.js"
+    "static/js/main.367c4048.chunk.js"
   ]
 }
