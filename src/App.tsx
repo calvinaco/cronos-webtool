@@ -17,7 +17,7 @@ export default function App() {
     return <React.Fragment />;
   }
 
-  const cronosService = new CronosService('https://cronos.crypto.org');
+  const cronosService = new CronosService('https://evm-cronos.crypto.org');
 
   const addAccountToWishList = (account: string) => {
     if (!cronosService.isValidAddress(account)) {
