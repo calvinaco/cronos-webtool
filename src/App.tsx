@@ -8,6 +8,7 @@ import CronosService from './service/cronos';
 import { DEFAULT_SETTINGS, Settings as SettingsType, Token } from './settings';
 import Accounts from './Accounts';
 import Settings from './Settings/Settings';
+import AccountCROBalance from './AccountCROBalance';
 
 export default function App() {
   const [settings, setSettings] = useLocalStorage<SettingsType>('settings');
@@ -69,6 +70,9 @@ export default function App() {
             onRemoveAccountFromWishList={removeAccountFromWishList}
             accounts={settings.accounts}
             tokens={settings.tokens}
+          />} />
+          <Route path="accountcrobalance" element={<AccountCROBalance
+            cronosService={cronosService}
           />} />
           <Route path="transaction" element={<Transaction cronosService={cronosService} />} />
           <Route path="settings" element={<Settings

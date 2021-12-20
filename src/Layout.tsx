@@ -15,6 +15,9 @@ export default function Layout() {
       case "accounts":
         navigate("/accounts");
         break;
+      case "accountcrobalance":
+        navigate("/accountcrobalance");
+        break;
       case "transaction":
         navigate("/transaction");
         break;
@@ -39,6 +42,9 @@ export default function Layout() {
       <h1>Cronos Web Tool</h1>
       <Tabs defaultActiveKey={activatedKey} onChange={handleTabChange}>
         <TabPane tab="Accounts Balances" key="accounts">
+          {" "}
+        </TabPane>
+        <TabPane tab="Account Historical CRO Balance" key="accountcrobalance">
           {" "}
         </TabPane>
         <TabPane tab="Query Transaction Status" key="transaction">
